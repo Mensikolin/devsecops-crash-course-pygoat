@@ -1,0 +1,31 @@
+#管道命名
+name: CI
+#流水线的触发条件：在推送时触发
+on: [push]
+#添加任务
+jobs:
+#  扫描任务：bandit
+ sast_scan:
+#   命名
+   name: Run Bandit Scan
+#   环境
+   runs-on: ubuntu-latest
+#   具体步骤
+   steps:
+#     查看代码
+   - name: Checkout code
+#     检出代码
+     uses: actions/checkout@v2
+#   显示安装任务需要的依赖
+   - name: Set up Python
+     uses: actions/setup-python@v2
+#     指定版本
+     with:
+       python-version: 3.8
+#   安装Bandit
+   - name: Install Bandit
+     run: pip install bandit
+#   运行Bandit
+   - name: Run Bandit Scan
+#     扫描所有文件
+     run: bandit -r . 
