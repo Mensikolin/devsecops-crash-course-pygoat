@@ -30,7 +30,7 @@ jobs:
 #     扫描所有文件,仅关注中、高级的风险
      run: bandit -ll -ii -r . -f json -o bandit-report.json#     上传产物，即检测报告
    - name: Upload Artifact
-     uses: actions/upload-artifact@v3
+     uses: actions/upload-artifact@v4
 #     无论前序步骤是否成功，都执行
      if: always()
      with:
