@@ -29,11 +29,4 @@ jobs:
    - name: Run Bandit Scan
 #     扫描所有文件,仅关注中、高级的风险
      run: bandit -ll -ii -r . -f json -o bandit-report.json
-#     上传产物
-   - name: Upload Artifact
-     uses: actions/upload-artifact@v4
-     # 无论前面内容是否成功运行，都运行此步骤
-     if: always()
-     with:
-      name: bandit-findings
-      path: bandit-report.json
+
